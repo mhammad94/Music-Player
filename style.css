@@ -1,0 +1,129 @@
+
+html{
+    height:100%;
+}
+
+body{
+    height:100%;
+}
+
+
+
+.audio-player-main{
+    background-color: #f2f2f2;
+    height: 80px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 15px 10px 15px 10px;
+}
+.audio-player-main .audio-player-main-inner{
+    justify-content: space-evenly;
+}
+.audio-player-main .audio-player-main-inner-player-controls a{
+    margin-right: 40px;
+}
+
+.audio-player-main .audio-player-main-inner-player-controls i{
+    color: #333333;
+}
+
+.audio-player-main .audio-player-main-inner-player-seekbar-time-elapsed{
+    color: #fb8b53;
+}
+
+.audio-player-main .audio-player-main-inner-player-song-details-img{
+    width: 53px;
+}
+
+input[type=range] {
+    margin: auto;
+    outline: none;
+    padding: 0;
+    width: 640px;
+    height: 2px;
+    background-color: #dedede;
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ff1100), color-stop(100%, #ff1100));
+    background-size: 0% 100%;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    -webkit-appearance: none;
+}
+
+
+input[type=range]::-webkit-slider-thumb {
+  height: 18px;
+  width: 28px;
+    border: 0;
+    background: #fff;
+    border: 1px solid #777;
+    border-radius: 8px;
+    box-shadow: 0 0 1px 0px rgba(0,0,0,0.1);
+    -webkit-appearance: none;
+    display: none;
+}
+
+.audio-player-main-inner-player-seekbar:hover input[type=range]::-webkit-slider-thumb {
+    display: block !important;
+    transition: 0.4s;
+}
+
+.audio-player-songs-list {
+    padding: 100px 10px 10px 10px;
+}
+
+.audio-player-songs-list .audio-player-songs-list-card-img{
+    width: 130px;
+}
+
+.audio-player-songs-list .audio-player-songs-list-card:hover .audio-player-songs-list-card-play-pause-btn{
+    display: flex !important;
+    transition: 0.4s;
+}
+
+.audio-player-songs-list li{
+    list-style: none ;
+    position: relative;
+}
+
+.audio-player-songs-list .audio-player-songs-list-main{
+    display: grid;
+    grid-gap: 50px;
+    grid-template-columns: 132px 132px 132px 132px 132px;
+    justify-content: center;
+}
+
+
+
+.audio-player-songs-list .audio-player-songs-list-card-play-pause-btn{
+    height: 60px;
+    width: 60px;
+    background-color: #f50;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+} 
+
+.audio-player-songs-list .audio-player-songs-list-card-play-pause-btn i{
+    color: #FFFF;
+    font-size: 30px;
+}
+
+/* .audio-player-songs-list .audio-player-songs-controls{
+    margin-top: -90px;
+} */
