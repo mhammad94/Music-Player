@@ -210,8 +210,8 @@ function playingFromGridandFooter(e){
 
 }
 
-function nextTrack(){
-    currSongIndex--;
+
+function footerPlayPauseSync(){
     let currentSongDivArr = [...document.querySelectorAll('.audio-player-songs-list-card-play-pause-btn')];
     let currGridbox = currentSongDivArr.find((el) => el.classList.contains(`${currSongIndex}`));
  
@@ -229,29 +229,18 @@ if(isPlaying === true ){
 }else{
     footerPlayPauseBtn.innerHTML = '<i class="fas fa-play">';
 }
+}
+
+function nextTrack(){
+    currSongIndex--;
+    footerPlayPauseSync();
     loadTrack(currSongIndex);
     playSong();
 };
 
 function previousTrack(){
     currSongIndex++;
-    let currentSongDivArr = [...document.querySelectorAll('.audio-player-songs-list-card-play-pause-btn')];
-    let currGridbox = currentSongDivArr.find((el) => el.classList.contains(`${currSongIndex}`));
- 
-    currentSongDivArr.forEach((el, i) => {
-        el.classList.remove('d-flex');
-        el.classList.add('d-none');
-        el.children[0].innerHTML = '<i class="fas fa-play">';
-       });
-    
-if(isPlaying === true ){
-    footerPlayPauseBtn.innerHTML = '<i class="fas fa-pause">';
-    currGridbox.classList.remove('d-none');
-    currGridbox.classList.add('d-flex');
-    currGridbox.children[0].innerHTML = '<i class="fas fa-pause">';
-}else{
-    footerPlayPauseBtn.innerHTML = '<i class="fas fa-play">';
-}
+ footerPlayPauseSync()
     loadTrack(currSongIndex);
     playSong();
 }
