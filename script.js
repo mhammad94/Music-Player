@@ -140,11 +140,7 @@ function playSong() {
 
 
 
-function previousTrack(){
-    currSongIndex++;
-    loadTrack(currSongIndex);
-    playSong();
-}
+
 
 function seekTrack(){
     let seekTo = trackPlayer.duration * (trackProgressBar.value / 100);
@@ -216,31 +212,49 @@ function playingFromGridandFooter(e){
 
 function nextTrack(){
     currSongIndex--;
-    let playPauseBtnArr = [...document.querySelectorAll('.PlayPauseBtn')];
     let currentSongDivArr = [...document.querySelectorAll('.audio-player-songs-list-card-play-pause-btn')];
     let currGridbox = currentSongDivArr.find((el) => el.classList.contains(`${currSongIndex}`));
+ 
     currentSongDivArr.forEach((el, i) => {
         el.classList.remove('d-flex');
-       el.classList.add('d-none');
-      });
-    playPauseBtnArr.forEach((el, i) => {
-        el.innerHTML = '<i class="fas fa-play">';
-});
+        el.classList.add('d-none');
+        el.children[0].innerHTML = '<i class="fas fa-play">';
+       });
+    
 if(isPlaying === true ){
     footerPlayPauseBtn.innerHTML = '<i class="fas fa-pause">';
     currGridbox.classList.remove('d-none');
     currGridbox.classList.add('d-flex');
-    currGridbox.innerHTML = '<i class="fas fa-pause">';
+    currGridbox.children[0].innerHTML = '<i class="fas fa-pause">';
 }else{
     footerPlayPauseBtn.innerHTML = '<i class="fas fa-play">';
 }
-
-    console.log(playPauseBtnArr);
     loadTrack(currSongIndex);
     playSong();
-    console.log(currSongIndex);
 };
 
+function previousTrack(){
+    currSongIndex++;
+    let currentSongDivArr = [...document.querySelectorAll('.audio-player-songs-list-card-play-pause-btn')];
+    let currGridbox = currentSongDivArr.find((el) => el.classList.contains(`${currSongIndex}`));
+ 
+    currentSongDivArr.forEach((el, i) => {
+        el.classList.remove('d-flex');
+        el.classList.add('d-none');
+        el.children[0].innerHTML = '<i class="fas fa-play">';
+       });
+    
+if(isPlaying === true ){
+    footerPlayPauseBtn.innerHTML = '<i class="fas fa-pause">';
+    currGridbox.classList.remove('d-none');
+    currGridbox.classList.add('d-flex');
+    currGridbox.children[0].innerHTML = '<i class="fas fa-pause">';
+}else{
+    footerPlayPauseBtn.innerHTML = '<i class="fas fa-play">';
+}
+    loadTrack(currSongIndex);
+    playSong();
+}
 
 
 // Progress and SeekBar Function
