@@ -153,19 +153,10 @@ function playingFromGridandFooter(e){
     let currentSongID = Number(e.id);
     let currentSongDiv = e.parentElement;
     let currentSongDivArr = [...document.querySelectorAll('.audio-player-songs-list-card-play-pause-btn')];
-    let playPauseBtnArr = [...document.querySelectorAll('.PlayPauseBtn')];
     let currGridbox = currentSongDivArr.find((el) => el.classList.contains(`${currentSongID}`));
 
-    playPauseBtnArr.forEach((el, i) => {
-           el.innerHTML = '<i class="fas fa-play">';
-   });
-
-  currentSongDivArr.forEach((el, i) => {
-     el.classList.remove('d-flex');
-    el.classList.add('d-none');
-   });
+     footerPlayPauseSync();
    
-
     if(isPlaying === false){
         e.innerHTML = '<i class="fas fa-pause">';
         footerPlayPauseBtn.innerHTML = '<i class="fas fa-pause">';
@@ -198,7 +189,6 @@ function playingFromGridandFooter(e){
             currGridbox.classList.remove('d-none');
             currGridbox.classList.add('d-flex');
             currGridbox.children[0].innerHTML = '<i class="fas fa-pause">';
-            console.log(currGridbox);
             isPaused = false;
         }
         isPlaying = true;
@@ -213,16 +203,16 @@ function playingFromGridandFooter(e){
 }
 
 
+
 function footerPlayPauseSync(){
     let currentSongDivArr = [...document.querySelectorAll('.audio-player-songs-list-card-play-pause-btn')];
     let currGridbox = currentSongDivArr.find((el) => el.classList.contains(`${currSongIndex}`));
- 
     currentSongDivArr.forEach((el, i) => {
         el.classList.remove('d-flex');
         el.classList.add('d-none');
         el.children[0].innerHTML = '<i class="fas fa-play">';
        });
-    
+
 if(isPlaying === true){
     footerPlayPauseBtn.innerHTML = '<i class="fas fa-pause">';
     currGridbox.classList.remove('d-none');
