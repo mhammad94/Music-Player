@@ -139,9 +139,6 @@ function playSong() {
 }
 
 
-
-
-
 function seekTrack(){
     let seekTo = trackPlayer.duration * (trackProgressBar.value / 100);
     trackPlayer.currentTime = seekTo;
@@ -221,27 +218,27 @@ function footerPlayPauseSync(){
         el.children[0].innerHTML = '<i class="fas fa-play">';
        });
     
-if(isPlaying === true ){
+if(isPlaying === true){
     footerPlayPauseBtn.innerHTML = '<i class="fas fa-pause">';
     currGridbox.classList.remove('d-none');
     currGridbox.classList.add('d-flex');
     currGridbox.children[0].innerHTML = '<i class="fas fa-pause">';
-}else{
-    footerPlayPauseBtn.innerHTML = '<i class="fas fa-play">';
 }
 }
 
 function nextTrack(){
     currSongIndex--;
-    footerPlayPauseSync();
+    footerPlayPauseBtn.setAttribute('id', currSongIndex);
     loadTrack(currSongIndex);
+    footerPlayPauseSync();
     playSong();
 };
 
 function previousTrack(){
     currSongIndex++;
- footerPlayPauseSync()
+    footerPlayPauseBtn.setAttribute('id', currSongIndex);
     loadTrack(currSongIndex);
+    footerPlayPauseSync()
     playSong();
 }
 
