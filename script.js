@@ -156,7 +156,6 @@ function playingFromGridandFooter(e){
     let playPauseBtnArr = [...document.querySelectorAll('.PlayPauseBtn')];
     let currGridbox = currentSongDivArr.find((el) => el.classList.contains(`${currentSongID}`));
 
-
     playPauseBtnArr.forEach((el, i) => {
            el.innerHTML = '<i class="fas fa-play">';
    });
@@ -171,9 +170,14 @@ function playingFromGridandFooter(e){
         e.innerHTML = '<i class="fas fa-pause">';
         footerPlayPauseBtn.innerHTML = '<i class="fas fa-pause">';
         footerPlayPauseBtn.setAttribute('id', currentSongID);
+        currGridbox.classList.remove('d-none');
+        currGridbox.classList.add('d-flex');
+        currGridbox.children[0].innerHTML = '<i class="fas fa-pause">';
+
         if(isPaused === false){
         currentSongDiv.classList.remove('d-none');
         currentSongDiv.classList.add('d-flex');
+        currGridbox.children[0].innerHTML = '<i class="fas fa-pause">';
         loadTrack(currentSongID);
         playSong();
         currSongIndex = currentSongID;
@@ -183,6 +187,7 @@ function playingFromGridandFooter(e){
             playSong();
             e.innerHTML = '<i class="fas fa-pause">';
             footerPlayPauseBtn.innerHTML = '<i class="fas fa-pause">';
+            currGridbox.children[0].innerHTML = '<i class="fas fa-pause">';
             currSongIndex = currentSongID;
             currentSongDiv.classList.remove('d-none');
             currentSongDiv.classList.add('d-flex');
@@ -192,7 +197,7 @@ function playingFromGridandFooter(e){
             currentSongDiv.classList.add('d-flex');
             currGridbox.classList.remove('d-none');
             currGridbox.classList.add('d-flex');
-            currGridbox.innerHTML = '<i class="fas fa-pause">';
+            currGridbox.children[0].innerHTML = '<i class="fas fa-pause">';
             console.log(currGridbox);
             isPaused = false;
         }
@@ -227,19 +232,23 @@ if(isPlaying === true){
 }
 
 function nextTrack(){
+    isPlaying = true;
     currSongIndex--;
     footerPlayPauseBtn.setAttribute('id', currSongIndex);
     loadTrack(currSongIndex);
     footerPlayPauseSync();
     playSong();
+  
 };
 
 function previousTrack(){
+    isPlaying = true;
     currSongIndex++;
     footerPlayPauseBtn.setAttribute('id', currSongIndex);
     loadTrack(currSongIndex);
     footerPlayPauseSync()
     playSong();
+    
 }
 
 
